@@ -29,17 +29,22 @@ requirements:
     - patch     # [unix]
     - m2-patch  # [win]
   host:
-    - python
+    - python >=3.6
     - pip
+    - setuptools
+    - wheel
   run:
-    - python
-    - graphviz
+    - python >=3.6
+    - graphviz >=2.46.1
 
 test:
   imports:
     - graphviz
   requires:
     - dask
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/xflr6/graphviz
