@@ -21,7 +21,7 @@ requirements:
     - pip
   run:
     - python
-    - graphviz <=3.0.0
+    - graphviz <3.0.0
 
 test:
   imports:
