@@ -19,6 +19,8 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
+    - wheel
   run:
     - python
     - graphviz <3.0.0
@@ -31,7 +33,7 @@ test:
 
 about:
   home: https://github.com/xflr6/graphviz
-  doc_url: https://graphviz.readthedocs.io
+  doc_url: https://graphviz.readthedocs.io/en/stable
   dev_url: https://github.com/xflr6/graphviz
 
   license: MIT
