@@ -11,9 +11,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   script:
-    - python -m pip install --no-deps --ignore-installed "{{SRC_DIR}}"
+    - python -m pip install --no-deps --no-build-isolation --ignore-installed "{{SRC_DIR}}"
 
 requirements:
   host:
@@ -28,7 +28,10 @@ requirements:
 test:
   imports:
     - graphviz
+  commands:
+    - pip check
   requires:
+    - pip
     - dask
 
 about:
