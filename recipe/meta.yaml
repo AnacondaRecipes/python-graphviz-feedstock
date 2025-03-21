@@ -23,7 +23,7 @@ requirements:
     - wheel
   run:
     - python
-    - graphviz <3.0.0
+    - graphviz
 
 test:
   imports:
