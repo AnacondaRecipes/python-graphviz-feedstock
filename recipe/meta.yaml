@@ -26,13 +26,21 @@ requirements:
     - graphviz
 
 test:
+  source_files:
+    - tests
   imports:
     - graphviz
   commands:
     - pip check
+    - pytest tests -v
   requires:
     - pip
     - dask
+    # https://github.com/pytest-dev/pytest/issues/12123
+    - pytest >=7,<8.1
+    - pytest-mock >=3
+    - pytest-cov
+    - coverage
 
 about:
   home: https://github.com/xflr6/graphviz
