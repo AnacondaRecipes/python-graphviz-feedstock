@@ -13,8 +13,6 @@ build:
   # gtk3 (graphviz dependency) not available on s390x
   skip: true  # [py<38 or s390x]
   number: 0
-  script:
-    - python -m pip install --no-deps --no-build-isolation --ignore-installed "{{SRC_DIR}}"
 
 requirements:
   host:
