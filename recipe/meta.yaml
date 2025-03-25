@@ -30,9 +30,8 @@ test:
   imports:
     - graphviz
   commands:
-    - set PATH=%LIBRARY_BIN%;%PATH%  # [win]
-    - pip check
-    - pytest tests -v
+    - pip check  # [unix]
+    - pytest tests -v  # [unix]
   requires:
     - pip
     - dask
