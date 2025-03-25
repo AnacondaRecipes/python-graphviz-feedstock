@@ -1,2 +1,5 @@
 build_env_vars:
   ANACONDA_ROCKET_ENABLE_PY313 : yes
+
+extra:
+  copy_test_source_files: false
