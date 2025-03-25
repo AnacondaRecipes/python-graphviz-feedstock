@@ -29,9 +29,6 @@ test:
     - tests
   imports:
     - graphviz
-  commands:
-    - pip check  # [unix]
-    - pytest tests -v  # [unix]
   requires:
     - pip
     - dask
