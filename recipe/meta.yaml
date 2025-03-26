@@ -33,7 +33,8 @@ test:
     - graphviz
   commands:
     - pip check
-    - pytest tests -v
+    # RuntimeError: No visualization engine detected on Windows
+    - pytest tests -v  # [unix]
   requires:
     - pip
     - dask
