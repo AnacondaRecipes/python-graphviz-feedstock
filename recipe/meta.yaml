@@ -27,6 +27,8 @@ requirements:
 test:
   source_files:
     - tests
+  imports:
+    - graphviz
   requires:
     - pip
     - dask
