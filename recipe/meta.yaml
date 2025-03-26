@@ -28,7 +28,7 @@ test:
   source_files:
     - tests
   requires:
-    - python-graphviz
+    - graphviz
     - pip
     - dask
     # https://github.com/pytest-dev/pytest/issues/12123
