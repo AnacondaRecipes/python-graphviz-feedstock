@@ -22,6 +22,7 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - libarchive  # [win]
   run:
     - python
     - graphviz
@@ -33,8 +34,7 @@ test:
     - graphviz
   commands:
     - pip check
-    # RuntimeError: No visualization engine detected on Windows
-    - pytest tests -v  # [unix]
+    - pytest tests -v
   requires:
     - pip
     - dask
