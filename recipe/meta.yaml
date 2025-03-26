@@ -22,7 +22,6 @@ requirements:
     - pip
     - setuptools
     - wheel
-    - libarchive  # [win]
   run:
     - python
     - graphviz
@@ -35,13 +34,10 @@ test:
   commands:
     - pip check
     - pytest tests -v
-    - dot -V  # [win]
   requires:
-    - graphviz  # [win]
     - pip
     - dask
-    # https://github.com/pytest-dev/pytest/issues/12123
-    - pytest >=7,<8.1
+    - pytest
     - pytest-mock >=3
     - pytest-cov
     - coverage
