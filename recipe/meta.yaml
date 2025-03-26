@@ -35,7 +35,9 @@ test:
   commands:
     - pip check
     - pytest tests -v
+    - dot -V  # [win]
   requires:
+    - graphviz  # [win]
     - pip
     - dask
     # https://github.com/pytest-dev/pytest/issues/12123
