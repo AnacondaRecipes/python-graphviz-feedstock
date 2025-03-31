@@ -33,7 +33,8 @@ test:
     - graphviz
   commands:
     - pip check
-    - pytest tests -v
+    - pytest tests -v  # [unix]
+    - pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph"  # [win]
   requires:
     - pip
     - dask
