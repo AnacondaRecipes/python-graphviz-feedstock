@@ -26,7 +26,6 @@ requirements:
   run:
     - python
     - graphviz
-    - gts  # [win]  # Add GTS dependency for Windows
 
 test:
   source_files:
@@ -35,25 +34,18 @@ test:
     - graphviz
   commands:
     - pip check
-    - |
-      if exist "%%PREFIX%%/Library/bin/dot.exe" (
-        echo "Graphviz found at %%PREFIX%%/Library/bin/dot.exe"
-      ) else (
-        echo "Graphviz not found!"
-      )  # [win]
-    - "%%PREFIX%%/Library/bin/dot.exe" -V  # [win]
-    - dir "%%PREFIX%%/Library/bin/*.exe"  # [win]  # List all executables to verify
+    - cmd: if exist "%%PREFIX%%/Library/bin/dot.exe" (echo "Graphviz found at %%PREFIX%%/Library/bin/dot.exe") else (echo "Graphviz not found!")  # [win]
+    - cmd: "%%PREFIX%%/Library/bin/dot.exe" -V  # [win]
+    - cmd: dir "%%PREFIX%%/Library/bin/*.exe"  # [win]
     - pytest tests -v  # [unix]
-    - |
-      pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph and not test_visualize"  # [win]
+    - cmd: pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph and not test_visualize"  # [win]
   requires:
     - pip
     - pytest
     - pytest-mock >=3
     - pytest-cov
     - coverage
-    - graphviz  # Add graphviz to test requirements
-    - gts  # [win]  # Add GTS dependency for Windows tests
+    - graphviz
 
 about:
   home: https://github.com/xflr6/graphviz
