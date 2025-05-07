@@ -14,6 +14,10 @@ build:
   number: 0
   script:
     - python -m pip install --no-deps --no-build-isolation --ignore-installed "{{SRC_DIR}}"
+    - if [ "$(uname)" == "Windows_NT" ]; then
+    -   echo "Adding Graphviz to PATH on Windows"
+    -   set "PATH=%PREFIX%\Library\bin;%PATH%"
+    - fi
 
 requirements:
   host:
@@ -32,6 +36,11 @@ test:
     - graphviz
   commands:
     - pip check
+    - if [ "$(uname)" == "Windows_NT" ]; then
+    -   echo "Verifying Graphviz installation on Windows"
+    -   where dot
+    -   dot -V
+    - fi
     - pytest tests -v  # [unix]
     - pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph"  # [win]
   requires:
@@ -41,6 +50,7 @@ test:
     - pytest-mock >=3
     - pytest-cov
     - coverage
+    - graphviz  # Add graphviz to test requirements
 
 about:
   home: https://github.com/xflr6/graphviz
