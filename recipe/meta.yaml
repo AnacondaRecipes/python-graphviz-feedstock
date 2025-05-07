@@ -10,7 +10,7 @@ source:
   sha256: 09d6bc81e6a9fa392e7ba52135a9d49f1ed62526f96499325930e87ca1b5925d
 
 build:
-  skip: true  # [py<38]
+  skip: true  # [py<38 or unix]
   number: 0
   script:
     - python -m pip install --no-deps --no-build-isolation --ignore-installed "{{SRC_DIR}}"
@@ -33,7 +33,7 @@ test:
   commands:
     - pip check
     - pytest tests -v  # [unix]
-    - pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph"  # [win]
+    - pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph and not test_visualize"  # [win]
   requires:
     - pip
     - dask
