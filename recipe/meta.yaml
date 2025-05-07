@@ -35,11 +35,17 @@ test:
     - graphviz
   commands:
     - pip check
-    - if exist "%%PREFIX%%/Library/bin/dot.exe" (echo "Graphviz found at %%PREFIX%%/Library/bin/dot.exe") else (echo "Graphviz not found!")  # [win]
+    - |
+      if exist "%%PREFIX%%/Library/bin/dot.exe" (
+        echo "Graphviz found at %%PREFIX%%/Library/bin/dot.exe"
+      ) else (
+        echo "Graphviz not found!"
+      )  # [win]
     - "%%PREFIX%%/Library/bin/dot.exe" -V  # [win]
     - dir "%%PREFIX%%/Library/bin/*.exe"  # [win]  # List all executables to verify
     - pytest tests -v  # [unix]
-    - pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph and not test_visualize"  # [win]
+    - |
+      pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph and not test_visualize"  # [win]
   requires:
     - pip
     - pytest
