@@ -14,7 +14,13 @@ build:
   number: 0
   script:
     - python -m pip install --no-deps --no-build-isolation --ignore-installed "{{SRC_DIR}}"
-    - set "GRAPHVIZ_EXE=%PREFIX%\Library\bin\dot.exe"  # [win]
+    - if exist "%PREFIX%\Library\bin\dot.exe" (
+    -   echo "Graphviz found at %PREFIX%\Library\bin\dot.exe"
+    -   copy "%PREFIX%\Library\bin\dot.exe" "%PREFIX%\Scripts\dot.exe"
+    - ) else (
+    -   echo "Graphviz not found at %PREFIX%\Library\bin\dot.exe"
+    -   exit 1
+    - )  # [win]
 
 requirements:
   host:
@@ -33,8 +39,8 @@ test:
     - graphviz
   commands:
     - pip check
-    - if exist "%GRAPHVIZ_EXE%" (echo "Graphviz found at %GRAPHVIZ_EXE%") else (echo "Graphviz not found!")  # [win]
-    - "%GRAPHVIZ_EXE%" -V  # [win]
+    - if exist "%PREFIX%\Scripts\dot.exe" (echo "Graphviz found in Scripts") else (echo "Graphviz not found in Scripts!")  # [win]
+    - "%PREFIX%\Scripts\dot.exe" -V  # [win]
     - pytest tests -v  # [unix]
     - pytest tests -v -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_render_raises_before_save and not test_subgraph_render and not test_subgraph"  # [win]
   requires:
