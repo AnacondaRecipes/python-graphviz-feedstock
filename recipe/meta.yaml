@@ -46,7 +46,7 @@ test:
     - python -c "from importlib.metadata import version; assert(version('{{ pypi_name }}')=='{{ version }}')"
     - python dask_test.py
     - python run-tests.py -k "not test_deprecated_escape"  # [not osx]
-    - python run-tests.py -k "not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_subgraph_render"  # [osx]
+    - python run-tests.py -k "not test_deprecated_escape and not test_pipe and not test_render and not test_render_img and not test_render_outfile_differnt_parent and not test_subgraph_render"  # [osx]
 
 about:
   home: https://github.com/xflr6/graphviz
