@@ -45,8 +45,8 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ pypi_name }}')=='{{ version }}')"
     - python dask_test.py
-    - export OS_ACTIVITY_MODE=disable  # [osx]
-    - python run-tests.py
+    # - python run-tests.py
+    - pytest -ra -v tests
 
 about:
   home: https://github.com/xflr6/graphviz
